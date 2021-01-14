@@ -46,8 +46,6 @@ const myLife = new LinkedList(7, "I entered School");
 myLife.insertBeginning(3, "I talked fluently");
 myLife.insertBeginning(1, "I was born");
 
-myLife.traverse();
-
 const age = prompt("How old are you?");
 myLife.insertHighlights(age);
 myLife.traverse();
