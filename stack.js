@@ -31,7 +31,7 @@ class Stack {
 
   pop = () => {
     if (this.isEmpty()) {
-      console.log("nothing Left");
+      console.log("The deck is empty!");
     } else {
       const popped = this.top;
       this.top = popped.next;
@@ -43,7 +43,8 @@ class Stack {
 
 const deck = new Stack();
 
-randomNumber = () => Math.floor(Math.random() * 10 + 1);
+randomNumber = () => Math.floor(Math.random() * 9 + 1);
+
 randomColor = () => {
   let c = Math.floor(Math.random() * 4);
   if (c === 0) return "red";
@@ -58,7 +59,6 @@ while (x < 20) {
   x++;
 }
 
-deck.peek();
 distribute = (player) => {
   console.log(`Player ${player}:`);
   let n = 1;
