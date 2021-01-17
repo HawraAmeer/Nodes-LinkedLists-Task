@@ -23,7 +23,7 @@ class Queue {
   enqueue = (groupSize) => {
     if (this.isFull()) {
       console.log("Queue Overflow");
-    } else if (groupSize <= 12) {
+    } else {
       const newNode = new Node(groupSize);
       if (this.isEmpty()) {
         this.front = newNode;
@@ -34,19 +34,6 @@ class Queue {
       }
       this.length++;
       this.qTime += groupSize * 30;
-    } else {
-      const newNode1 = new Node(12);
-      const newNode2 = new Node(groupSize - 12);
-      if (this.isEmpty()) {
-        this.front = newNode1;
-        this.back = newNode2;
-      } else {
-        this.back.next = newNode1;
-        newNode1.next = newNode2;
-        this.back = newNode2;
-      }
-      this.length += 2;
-      this.qTime += 12 * 30 + (groupSize - 12) * 30;
     }
   };
 
@@ -68,19 +55,31 @@ class Queue {
   };
 }
 
+const prompt = require("prompt-sync")({ sigint: true });
+
 const ride = new Queue();
 
-ride.enqueue(4);
 console.log(`waiting time = ${ride.qTime / 60} minutes`);
 
-ride.enqueue(8);
-ride.enqueue(12);
-ride.enqueue(16);
-ride.enqueue(20);
+let groupSize = prompt(
+  "What is the number of people in the group? - enter 0 to stop -"
+);
 
-console.log(`${ride.qTime / 30} person are in the queue....`);
+while (groupSize !== "0") {
+  if (groupSize <= 12) {
+    ride.enqueue(groupSize);
+  } else {
+    ride.enqueue(12);
+    ride.enqueue(groupSize - 12);
+  }
+  groupSize = prompt(
+    "What is the number of people in the group? - enter 0 to stop -"
+  );
+}
+
+console.log(`${ride.qTime / 30} persons are in the line....`);
 console.log(`waiting time = ${ride.qTime / 60} minutes`);
 
-console.log(`${ride.dequeue()} person went into the ride....`);
+console.log(`${ride.dequeue()} persons went into the ride....`);
 
 console.log(`waiting time = ${ride.qTime / 60} minutes`);
