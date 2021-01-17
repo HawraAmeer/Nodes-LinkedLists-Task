@@ -4,6 +4,8 @@ class Node {
     this.number = number;
     this.next = next;
   }
+
+  // getData = () => `${this.color} - ${this.number}`;
 }
 
 class Stack {
@@ -17,11 +19,13 @@ class Stack {
 
   isEmpty = () => this.length === 0;
 
-  peek = () => (this.isEmpty() ? "it is Empty" : this.top);
+  peek = () => (this.isEmpty() ? "it is Empty" : this.top); // this.top.getData();
+  // "No cards left in the deck"
 
   push = (color, number) => {
     if (this.isFull()) {
       console.log("it is Full");
+      // "The deck is full!"
     } else {
       const newNode = new Node(color, number, this.top);
       this.top = newNode;
@@ -36,12 +40,20 @@ class Stack {
       const popped = this.top;
       this.top = popped.next;
       this.length--;
-      return popped;
+      return popped; // .getData()
     }
   };
 }
 
 const deck = new Stack();
+
+// const colors = ["red", "blue", "green", "yellow"];
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// const random = (array) => {
+//   const randomIndex = Mathfloor(Math.random() * array.length);
+//   return array[randomIndex];
+// };
 
 randomNumber = () => Math.floor(Math.random() * 9 + 1);
 
