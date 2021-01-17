@@ -5,7 +5,7 @@ class Node {
     this.next = next;
   }
 
-  // getData = () => `${this.color} - ${this.number}`;
+  // getData = () => `${this.number} - ${this.color}`;
 }
 
 class Stack {
@@ -71,6 +71,20 @@ while (x < 20) {
   x++;
 }
 
+// while (!deck.isFull()) {
+//   let color = random(colors);
+//   let number = random(numbers);
+//   deck.push(color, number);
+// }
+
+// let playerCards = 5;
+// let player1Cards = [];
+// let player2Cards = [];
+// for (let i = 0; i < 5; i++) {
+//   player1Cards.push(deck.pop());
+//   player2Cards.push(deck.pop());
+// }
+
 distribute = (player) => {
   console.log(`Player ${player}:`);
   let n = 1;
@@ -85,3 +99,9 @@ distribute(1);
 distribute(2);
 
 console.log(`First card in deck: ${deck.peek().color}-${deck.peek().number}`);
+
+// console.table(player1Cards);
+// console.table(player2Cards);
+// console.log(deck.peek());
+// console.log("--------------");
+// deck.traverse();
