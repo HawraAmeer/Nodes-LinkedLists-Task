@@ -6,7 +6,7 @@ class Node {
 }
 
 class Queue {
-  constructor(limit = 10) {
+  constructor(limit = 5) {
     this.front = null;
     this.back = null;
     this.length = 0;
@@ -69,8 +69,11 @@ while (groupSize !== "0") {
   if (groupSize <= 12) {
     ride.enqueue(groupSize);
   } else {
-    ride.enqueue(12);
-    ride.enqueue(groupSize - 12);
+    while (!(groupSize < 12)) {
+      ride.enqueue(12);
+      groupSize -= 12;
+    }
+    ride.enqueue(groupSize);
   }
   groupSize = prompt(
     "What is the number of people in the group? - enter 0 to stop -"
