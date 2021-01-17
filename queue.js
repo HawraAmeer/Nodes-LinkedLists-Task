@@ -19,11 +19,29 @@ class Queue {
   isEmpty = () => this.length === 0;
 
   peek = () => (this.isEmpty() ? `Queue Underflow` : this.front.groupSize);
+  // peek = () => this.qTime
+
+  //   addNode = (groupSize) => {
+  //     const newNode = new Node(groupSize);
+  //     if (this.isEmpty()) this.front = newNode;
+  //     else this.back.next = newNode;
+
+  //     this.back = newNode;
+  //     this.length++;
+  //     this.qTime += groupSize * 30;
+  //   };
 
   enqueue = (groupSize) => {
     if (this.isFull()) {
       console.log("Queue Overflow");
+      // console.log(`The line is full. Come back after ${this.qTime}`);
     } else {
+      //   let peopleNum = groupSize;
+      //   while (peopleNum > 12) {
+      //     this.addNode(12);
+      //     peopleNum -= 12;
+      //   }
+      //   this.addNode(peopleNum);
       const newNode = new Node(groupSize);
       if (this.isEmpty()) {
         this.front = newNode;
@@ -40,6 +58,7 @@ class Queue {
   dequeue = () => {
     if (this.isEmpty()) {
       console.log("Queue Underflow");
+      // console.log("Queue is empty, no one to ride!");
     } else {
       const removed = this.front;
       if (this.length === 1) {
@@ -86,3 +105,5 @@ console.log(`waiting time = ${ride.qTime / 60} minutes`);
 console.log(`${ride.dequeue()} persons went into the ride....`);
 
 console.log(`waiting time = ${ride.qTime / 60} minutes`);
+
+// console.log(`back node ${ride.back.groupSize}`);
