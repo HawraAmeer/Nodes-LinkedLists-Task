@@ -15,15 +15,14 @@ class TreeNode {
 
   traverseToFindParent = (child) => {
     let nodes = [this];
-    let parent = new TreeNode(child.name.slice(child.name.indexOf(" ") + 1));
     while (nodes.length > 0) {
       let current = nodes.pop();
-      if (parent.name === current.name) {
+      if (child.name.split(" ")[1] === current.name.split(" ")[0]) {
         return current;
       }
       nodes = [...nodes, ...current.children];
     }
-    return `parent does not exist`;
+    return "parent does not exist";
   };
 
   traverse = () => {
@@ -42,7 +41,10 @@ let childName = prompt("enter child full name (done if finished):");
 while (childName !== "done") {
   let child = new TreeNode(childName);
   let parent = root.traverseToFindParent(child);
-  parent.addChild(child);
+
+  if (parent !== "parent does not exist") parent.addChild(child);
+  else console.log(parent);
+
   childName = prompt("enter child full name (done if finished):");
 }
 
