@@ -43,7 +43,16 @@ class HashTable {
     }, 0);
   };
 
+  // hash = (score) => {
+  //   if (scroe >= 90) return "A";
+  //   else if (scroe >= 80) return "B";
+  //   else if (scroe >= 70) return "C";
+  //   else if (scroe >= 60) return "D";
+  //   else return "Other";
+  // }
+
   compress = (hashCode) => hashCode % this.classSize;
+  // no need for it.
 
   insert = (student) => {
     if (student.score >= 90 && this.classes.A.length < this.classSize)
@@ -70,6 +79,13 @@ class HashTable {
       this.classes.Other.push(student);
     else console.log(`the class is full!`);
   };
+
+  // insert = (name, score) => {
+  //   const classroom = this.hash(score);
+  //   if (this.classes[classroom].length < this.classSize) {
+  //     this.classes[classroom].push({ name, score });
+  //   } else console.log("The class is full");
+  // };
 }
 
 const max = prompt("What is the maximum number of students in each class?");
@@ -94,3 +110,14 @@ console.log(school.classes.D);
 
 console.log("Class Other:");
 console.log(school.classes.Other);
+
+// console.log(Object.keys(school.classes));
+// console.log(Object.values(school.classes));
+// console.log(Object.entries(school.classes));
+// console.log(school.classes));
+// console.table(school.classes));
+
+// for (let element of Object.entries(school.classes)) {
+//   console.log(`CLASSROOM ${element[0]}`);
+//   console.table(element[1]);
+// }
